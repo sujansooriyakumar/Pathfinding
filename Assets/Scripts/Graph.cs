@@ -4,19 +4,28 @@ using UnityEngine;
 
 public class Graph : MonoBehaviour
 {
+    public Node currentNode;
+    public GameObject npc;
 
   
 
 
    public Connection[] GetConnections(Node fromNode_)
     {
-        Connection[] connections = null;
-        return connections;
+        return fromNode_.connections;
+        
     }
 
     public int GetCost(Node current, Node next)
     {
         int result = 0;
+        for(int i = 0; i < current.connections.Length; i++)
+        {
+            if(current.connections[i].toNode == next)
+            {
+                result = current.connections[i].cost;
+            }
+        }
 
         return result;
     }

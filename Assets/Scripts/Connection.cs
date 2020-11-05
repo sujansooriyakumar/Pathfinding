@@ -6,9 +6,9 @@ public class Connection : MonoBehaviour
 {
     public Node fromNode;
     public Node toNode;
-    public float cost;
+    public int cost;
 
-    private float GetCost()
+    private int GetCost()
     {
         return cost;
     }

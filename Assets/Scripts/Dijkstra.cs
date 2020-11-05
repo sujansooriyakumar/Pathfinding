@@ -6,7 +6,7 @@ public class Dijkstra : MonoBehaviour
 {
     int priority;
     Node start;
-    Graph graph;
+    public Graph graph;
     Node current;
     public Node goal;
     PriorityQueue<Node> frontier = new PriorityQueue<Node>();
@@ -16,11 +16,16 @@ public class Dijkstra : MonoBehaviour
 
     private void Start()
     {
-        start.priority = 0;
+        //start.priority = 0;
         frontier.Enqueue(start);
         came_from[start] = null;
         cost_so_far[null] = 0;
         
+    }
+
+    private void Update()
+    {
+        PerformAlgorithm();
     }
 
     void PerformAlgorithm()
@@ -41,7 +46,7 @@ public class Dijkstra : MonoBehaviour
                 {
                     cost_so_far[c.toNode] = new_cost;
                     priority = new_cost;
-                    c.toNode.priority = priority;
+                    c.toNode.priority = graph.GetCost(current, c.toNode);
                     frontier.Enqueue(c.toNode);
                     came_from[c.toNode] = current;
                     

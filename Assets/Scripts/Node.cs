@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class Node: IComparable<Node>
+public class Node: MonoBehaviour, IComparable<Node>
 {
     public Vector3 position;
     public Node parent;
     public int priority;
-
+    public Connection[] connections;
+    
     public int CompareTo(Node other)
     {
         if(this.priority < other.priority)

@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 258318832}
   - component: {fileID: 258318831}
   m_Layer: 0
-  m_Name: E1
+  m_Name: E to F
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -180,6 +180,7 @@ GameObject:
   - component: {fileID: 338291268}
   - component: {fileID: 338291270}
   - component: {fileID: 338291269}
+  - component: {fileID: 338291271}
   m_Layer: 0
   m_Name: GameObject (1)
   m_TagString: Untagged
@@ -214,7 +215,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 338291267}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b94fe0762db6044488f3d02bfa0b1c6, type: 3}
   m_Name: 
@@ -222,10 +223,11 @@ MonoBehaviour:
   graph: {fileID: 338291270}
   startNode: {fileID: 788682381}
   reached: []
-  goal: {fileID: 1429608576}
+  goal: {fileID: 0}
   currentNode: {fileID: 788682381}
   path: []
   npc: {fileID: 513768831}
+  i: 0
 --- !u!114 &338291270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,6 +242,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentNode: {fileID: 788682381}
   npc: {fileID: 513768831}
+--- !u!114 &338291271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 338291267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7347a90c85704f9439ca648b6e73c11f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  start: {fileID: 788682381}
+  graph: {fileID: 338291270}
+  current: {fileID: 788682381}
+  test: {fileID: 914280270}
+  goal: {fileID: 2131558455}
+  path: []
 --- !u!1 &448535754
 GameObject:
   m_ObjectHideFlags: 0
@@ -251,7 +271,7 @@ GameObject:
   - component: {fileID: 448535755}
   - component: {fileID: 448535756}
   m_Layer: 0
-  m_Name: B1
+  m_Name: B to C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -407,7 +427,7 @@ GameObject:
   - component: {fileID: 532861569}
   - component: {fileID: 532861570}
   m_Layer: 0
-  m_Name: F1
+  m_Name: F to C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -453,7 +473,7 @@ GameObject:
   - component: {fileID: 599126191}
   - component: {fileID: 599126192}
   m_Layer: 0
-  m_Name: E3
+  m_Name: E to D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -487,7 +507,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fromNode: {fileID: 2018550308}
   toNode: {fileID: 2131558455}
-  cost: 2
+  cost: 1
 --- !u!1 &620453802
 GameObject:
   m_ObjectHideFlags: 0
@@ -499,7 +519,7 @@ GameObject:
   - component: {fileID: 620453803}
   - component: {fileID: 620453804}
   m_Layer: 0
-  m_Name: F2
+  m_Name: F to E
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -637,7 +657,7 @@ GameObject:
   - component: {fileID: 724818001}
   - component: {fileID: 724818002}
   m_Layer: 0
-  m_Name: B2
+  m_Name: B to E
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -800,7 +820,7 @@ GameObject:
   - component: {fileID: 826427130}
   - component: {fileID: 826427131}
   m_Layer: 0
-  m_Name: A2
+  m_Name: A to D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -834,7 +854,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fromNode: {fileID: 788682381}
   toNode: {fileID: 2131558455}
-  cost: 3
+  cost: 8
 --- !u!1 &914280268
 GameObject:
   m_ObjectHideFlags: 0
@@ -1048,7 +1068,7 @@ GameObject:
   - component: {fileID: 1147726101}
   - component: {fileID: 1147726100}
   m_Layer: 0
-  m_Name: D1
+  m_Name: D to A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1094,7 +1114,7 @@ GameObject:
   - component: {fileID: 1183198865}
   - component: {fileID: 1183198866}
   m_Layer: 0
-  m_Name: E2
+  m_Name: E to B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1257,7 +1277,7 @@ GameObject:
   - component: {fileID: 1433895839}
   - component: {fileID: 1433895840}
   m_Layer: 0
-  m_Name: A1
+  m_Name: A to B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1420,7 +1440,7 @@ GameObject:
   - component: {fileID: 1868574894}
   - component: {fileID: 1868574895}
   m_Layer: 0
-  m_Name: D2
+  m_Name: D to E
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1466,7 +1486,7 @@ GameObject:
   - component: {fileID: 1972028401}
   - component: {fileID: 1972028402}
   m_Layer: 0
-  m_Name: C1
+  m_Name: C to F
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1500,7 +1520,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fromNode: {fileID: 1569796725}
   toNode: {fileID: 1429608576}
-  cost: 4
+  cost: 2
 --- !u!1 &1986150278
 GameObject:
   m_ObjectHideFlags: 0
@@ -1512,7 +1532,7 @@ GameObject:
   - component: {fileID: 1986150279}
   - component: {fileID: 1986150280}
   m_Layer: 0
-  m_Name: B3
+  m_Name: B to A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1794,7 +1814,7 @@ GameObject:
   - component: {fileID: 2136953847}
   - component: {fileID: 2136953848}
   m_Layer: 0
-  m_Name: C2
+  m_Name: C to B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

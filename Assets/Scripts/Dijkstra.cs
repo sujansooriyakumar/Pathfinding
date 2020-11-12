@@ -2,59 +2,113 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Dijkstra : MonoBehaviour
 {
-    int priority;
-    Node start;
+    int priority, i;
+    public Node start;
     public Graph graph;
-    Node current;
+    public Node current;
+    public Node test;
     public Node goal;
-    PriorityQueue<Node> frontier = new PriorityQueue<Node>();
-    Dictionary<Node, Node> came_from;
-    Dictionary<Node, int> cost_so_far;
-
+    public PriorityQueue<Node> frontier = new PriorityQueue<Node>();
+    public Dictionary<Node, Node> came_from = new Dictionary<Node, Node>();
+    public Dictionary<Node, int> cost_so_far = new Dictionary<Node, int>();
+    public List<Node> path = new List<Node>();
+    bool pathfound;
 
     private void Start()
     {
-        //start.priority = 0;
+       
+        pathfound = false;
+        start.priority = 0;
         frontier.Enqueue(start);
         came_from[start] = null;
-        cost_so_far[null] = 0;
-        
+        cost_so_far[start] = 0;
+        path.Add(goal);
+  
+
+
+
     }
 
     private void Update()
     {
-        PerformAlgorithm();
+        if (current != goal)
+        {
+            PerformAlgorithm();
+        }
+        else if(current == goal)
+        {
+            FindPath();
+        }
+
     }
 
     void PerformAlgorithm()
     {
-        while(frontier.Count > 0)
+        if (frontier.Count > 0)
         {
-            current = frontier.Peek();
+            current = frontier.Dequeue();
+        
 
-            if(current == goal)
-            {
-                break;
-            }
 
-            foreach(Connection c in graph.GetConnections(current))
+            foreach (Connection c in graph.GetConnections(current))
             {
+
                 int new_cost = cost_so_far[current] + graph.GetCost(current, c.toNode);
-                if(cost_so_far.ContainsKey(c.toNode) == false || new_cost < cost_so_far[c.toNode])
+
+                if (cost_so_far.ContainsKey(c.toNode) == false || new_cost < cost_so_far[c.toNode])
                 {
                     cost_so_far[c.toNode] = new_cost;
-                    priority = new_cost;
-                    c.toNode.priority = graph.GetCost(current, c.toNode);
+                    c.toNode.priority = new_cost;
                     frontier.Enqueue(c.toNode);
                     came_from[c.toNode] = current;
-                    
+
                 }
-            }
+
 
             }
-            
         }
     }
+
+    void FindPath()
+    {
+        if (!pathfound)
+        {
+            Node nextNode = came_from[goal];
+            path.Add(nextNode);
+            Debug.Log("Next Node is " + nextNode);
+            Node tmp = came_from[nextNode];
+            path.Add(tmp);
+            while(tmp != start)
+            {
+                Debug.Log("Next Node is " + tmp);
+                
+                tmp = came_from[tmp];
+                path.Add(tmp);
+            }
+            Debug.Log("Next Node is " + tmp);
+            i = path.Count - 1;
+            pathfound = true;
+        }
+        if (pathfound) MoveCharacter();
+    }
+
+    void MoveCharacter()
+    {
+        if (i > 0)
+        {
+            Vector3 result = path[i-1].transform.position - graph.npc.transform.position;
+            if (result.magnitude < 0.1f)
+            {
+                i--;
+            }
+            else
+            {
+                graph.npc.transform.position += result.normalized * 10.0f * Time.deltaTime;
+            }
+        }
+    }
+}
 

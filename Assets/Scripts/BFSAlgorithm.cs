@@ -12,7 +12,9 @@ public class BFSAlgorithm : MonoBehaviour
     public Node currentNode;
     public List<Node> path = new List<Node>();
     public GameObject npc;
-    int i;
+    public int i;
+    int x = 0;
+
     bool pathFound;
 
     private void Start()
@@ -24,7 +26,6 @@ public class BFSAlgorithm : MonoBehaviour
     }
     private void Update()
     {
-
         if (currentNode != goal) PerformAlgorithm();
         else
         {
@@ -65,32 +66,33 @@ public class BFSAlgorithm : MonoBehaviour
             
 
         }
-        if (pathFound == false)
+        if (path[path.Count-1].parent == startNode && !pathFound)
         {
-            i = path.Count;
+            i = path.Count - 1;
             pathFound = true;
         }
-            MoveNPC();
-        
-        
-       
-            
-        
+
+        if(pathFound == true) MoveNPC();
+
+
+
+
+
+
     }
 
     void MoveNPC()
     {
-        Debug.Log(i);
-        if (i > 0)
+        if(i >0)
         {
-            Vector3 result = path[i-1].transform.position - npc.transform.position;
-            if(result.magnitude < 0.1f)
+            Vector3 result = path[i].transform.position - npc.transform.position;
+            if (result.magnitude < 0.1f)
             {
-                Debug.Log("test");
                 i--;
             }
-            else{
-                npc.transform.position += result.normalized *10.0f* Time.deltaTime;
+            else
+            {
+                npc.transform.position += result.normalized * 10.0f * Time.deltaTime;
             }
         }
     }

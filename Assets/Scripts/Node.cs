@@ -9,19 +9,35 @@ public class Node: MonoBehaviour, IComparable<Node>
     public Node parent;
     public int priority;
     public Connection[] connections;
-    
+    public void Start()
+    {
+        FindConnections();
+    }
+
+    private void Update()
+    {
+
+    }
+
     public int CompareTo(Node other)
     {
         if(this.priority < other.priority)
         {
             return -1;
-        } else if(this.priority > other.priority)
-        {
+        }
+
+        else if (this.priority > other.priority){
             return 1;
         }
-        else
+        else 
         {
             return 0;
         }
+    }
+
+    public void FindConnections()
+    {
+        connections = GetComponentsInChildren<Connection>();
+
     }
 }

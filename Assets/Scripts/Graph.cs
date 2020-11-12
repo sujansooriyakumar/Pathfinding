@@ -26,7 +26,6 @@ public class Graph : MonoBehaviour
                 result = current.connections[i].cost;
             }
         }
-
         return result;
     }
 }

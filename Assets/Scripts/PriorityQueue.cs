@@ -15,12 +15,13 @@ public class PriorityQueue<T> where T: IComparable<T>
     public void Enqueue(T item)
     {
         data.Add(item);
-        int childIndex = data.Count - 1;
 
+        int childIndex = data.Count - 1;
+        
         while(childIndex > 0)
         {
             int parentIndex = (childIndex - 1) / 2;
-            if(data[childIndex].CompareTo(data[parentIndex]) >=0)
+            if(data[childIndex].CompareTo(data[parentIndex]) >= 0)
             {
                 break;
             }
@@ -28,14 +29,19 @@ public class PriorityQueue<T> where T: IComparable<T>
             T tmp = data[childIndex];
             data[childIndex] = data[parentIndex];
             data[parentIndex] = tmp;
-
             childIndex = parentIndex;
+
         }
+
+
+
+
     }
 
     public T Dequeue()
     {
         int lastIndex = data.Count - 1;
+
         T frontItem = data[0];
 
         data[0] = data[lastIndex];
@@ -43,9 +49,11 @@ public class PriorityQueue<T> where T: IComparable<T>
         lastIndex--;
 
         int parentIndex = 0;
+
         while (true)
         {
-            int childIndex = parentIndex * 2 + 1;
+            int childIndex = (parentIndex * 2) + 1;
+
             if(childIndex > lastIndex)
             {
                 break;
@@ -62,12 +70,12 @@ public class PriorityQueue<T> where T: IComparable<T>
                 break;
             }
 
-            T tmp = data[parentIndex];
-            data[parentIndex] = data[childIndex];
-            data[childIndex] = tmp;
+            T tmp = data[childIndex];
+            data[childIndex] = data[parentIndex];
+            data[parentIndex] = tmp;
             parentIndex = childIndex;
-        }
 
+        }
 
         return frontItem;
     }

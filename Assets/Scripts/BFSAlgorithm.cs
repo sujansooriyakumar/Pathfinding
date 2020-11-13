@@ -85,7 +85,7 @@ public class BFSAlgorithm : MonoBehaviour
     {
         if(i >0)
         {
-            Vector3 result = path[i].transform.position - npc.transform.position;
+            Vector3 result = path[i-1].transform.position - npc.transform.position;
             if (result.magnitude < 0.1f)
             {
                 i--;

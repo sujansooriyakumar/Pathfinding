@@ -9,7 +9,6 @@ public class Dijkstra : MonoBehaviour
     public Node start;
     public Graph graph;
     public Node current;
-    public Node test;
     public Node goal;
     public PriorityQueue<Node> frontier = new PriorityQueue<Node>();
     public Dictionary<Node, Node> came_from = new Dictionary<Node, Node>();
@@ -79,16 +78,15 @@ public class Dijkstra : MonoBehaviour
             Node nextNode = came_from[goal];
             path.Add(nextNode);
             Debug.Log("Next Node is " + nextNode);
-            Node tmp = came_from[nextNode];
-            path.Add(tmp);
-            while(tmp != start)
+           
+            while(nextNode != start)
             {
-                Debug.Log("Next Node is " + tmp);
+                Debug.Log("Next Node is " + nextNode);
                 
-                tmp = came_from[tmp];
-                path.Add(tmp);
+                nextNode = came_from[nextNode];
+                path.Add(nextNode);
             }
-            Debug.Log("Next Node is " + tmp);
+            Debug.Log("Next Node is " + nextNode);
             i = path.Count - 1;
             pathfound = true;
         }
@@ -100,6 +98,7 @@ public class Dijkstra : MonoBehaviour
         if (i > 0)
         {
             Vector3 result = path[i-1].transform.position - graph.npc.transform.position;
+            result.y = 0;
             if (result.magnitude < 0.1f)
             {
                 i--;
